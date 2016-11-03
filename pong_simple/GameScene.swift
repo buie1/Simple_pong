@@ -18,11 +18,19 @@ class GameScene: SKScene {
     var enemy = SKSpriteNode();
     var main = SKSpriteNode();
     
+    var topLabel = SKLabelNode();
+    var btmlabel = SKLabelNode();
+    
     var score = [Int]()
     
     override func didMove(to view: SKView) {
         
         startGame()
+        
+        topLabel = self.childNode(withName: "topLabel") as! SKLabelNode
+        btmlabel = self.childNode(withName: "btmLabel") as! SKLabelNode
+        
+        
         ball = self.childNode(withName: "ball") as! SKSpriteNode
         enemy = self.childNode(withName: "enemy") as! SKSpriteNode
         main = self.childNode(withName: "main") as! SKSpriteNode
@@ -41,6 +49,10 @@ class GameScene: SKScene {
     
     func startGame() {
         score = [0,0]
+        topLabel.text = "\(score[1])"
+        btmlabel.text = "\(score[0])"
+        
+        
     }
     
     func addScore(playerWhoWon: SKSpriteNode){
@@ -57,8 +69,8 @@ class GameScene: SKScene {
             
         }
         
-        print(score)
-        
+        topLabel.text = "\(score[1])"
+        btmlabel.text = "\(score[0])"
     }
     
     
